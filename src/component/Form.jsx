@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import { useState, useRef } from "react";
 import { Button } from "@mui/material";
 import TextField from "@mui/material/TextField";
 
@@ -33,7 +33,6 @@ const Form = () => {
     )
       .then((res) => res.json())
       .then((data) => {
-        // console.log(data);
         alert(data.msg);
         setFormData({
           name: "",
@@ -44,6 +43,12 @@ const Form = () => {
         });
       })
       .catch((err) => console.log(err));
+  };
+
+  const handleCheckSheet = () => {
+    const googleDriveUrl =
+      "https://docs.google.com/spreadsheets/d/1sw05P-jFEtS1oDrjf3AVxmdmCZsP5Ums-C_kKCp-JyQ/edit#gid=0";
+    window.open(googleDriveUrl, "_blank");
   };
 
   return (
@@ -102,10 +107,11 @@ const Form = () => {
           Submit
         </Button>
       </form>
+      <Button variant="contained" color="warning" onClick={handleCheckSheet}>
+        Click Me - To Check the Sheet
+      </Button>
     </>
   );
 };
 
 export default Form;
-
-//https://docs.google.com/spreadsheets/d/1sw05P-jFEtS1oDrjf3AVxmdmCZsP5Ums-C_kKCp-JyQ/edit#gid=0
